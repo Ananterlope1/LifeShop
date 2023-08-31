@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
 
 
 
@@ -141,7 +142,9 @@ void ALifeShopCharacter::Inventory()
 	if(InventoryWidget != nullptr)
 	{
 		InventoryWidget->AddToViewport();
-		
+		APlayerController* PlayerCon = UGameplayStatics::GetPlayerController(GetWorld(), 0);
+		PlayerCon->bShowMouseCursor = true;
+		PlayerCon->SetInputMode(FInputModeUIOnly());
 	}
 }
 
