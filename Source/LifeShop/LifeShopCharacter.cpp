@@ -9,6 +9,8 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -84,6 +86,9 @@ void ALifeShopCharacter::SetupPlayerInputComponent(class UInputComponent* Player
 		//Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ALifeShopCharacter::Look);
 
+		PlayerInputComponent -> BindAction(TEXT("Inventory"), EInputEvent::IE_Pressed, this, &ALifeShopCharacter::Inventory);
+
+
 	}
 
 }
@@ -130,5 +135,14 @@ int32 ALifeShopCharacter::SpendMoney(int32 Money)
 	return RemainingMoney;
 }
 
+void ALifeShopCharacter::Inventory()
+{
+	UUserWidget* InventoryWidget = CreateWidget(GetWorld(), WidgetInventoryClass);
+	if(InventoryWidget != nullptr)
+	{
+		InventoryWidget->AddToViewport();
+		
+	}
+}
 
 

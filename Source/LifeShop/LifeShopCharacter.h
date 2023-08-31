@@ -57,6 +57,10 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	void Inventory();
+
+	
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
@@ -68,5 +72,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	int32 SpendMoney(int32 Money);
+	
+	UPROPERTY(EditAnywhere, Category="Inventory")
+	TSubclassOf<UUserWidget> WidgetInventoryClass;
+
 };
 
