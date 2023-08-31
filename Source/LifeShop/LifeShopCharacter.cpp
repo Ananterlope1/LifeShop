@@ -124,6 +124,11 @@ void ALifeShopCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+int32 ALifeShopCharacter::SpendMoney(int32 Money)
+{
+	int32 RemainingMoney = CurrentMoney - Money;
+	return RemainingMoney;
+}
 
 
 
